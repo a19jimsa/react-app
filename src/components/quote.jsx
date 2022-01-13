@@ -9,7 +9,6 @@ class Quote extends React.Component {
 
     async componentDidMount(){
         var content = this.props.content;
-        console.log(content);
         if(content.includes("[quote]")){
             content = content.replaceAll("[quote]", "<div class='quote'>");
             content = content.replaceAll("[/quote]", "</div>");

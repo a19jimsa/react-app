@@ -32,11 +32,39 @@ router.get("/", (req, res)=>{
   });
 })
 
+router.get("/:query", (req, res)=>{
+    const dbConnect = db.getDb();
+    var regex = new RegExp(req.params.query, "i");
+    dbConnect.collection('comments')
+    .find({content: regex})
+    .toArray(function (err, result){
+        if (err) {
+            console.log("Something went wrong with DB call", err)
+        } else {
+            res.status(200).send(result);
+        }
+    });
+})
+
 //GET all comments on a specific thread
 router.get("/:id", (req, res)=>{
     const dbConnect = db.getDb();
     dbConnect.collection('comments')
     .find({['id']: req.params.id})
+    .toArray(function (err, result) {
+        if (err) {
+            console.log("Something went wrong with DB call", err)
+        } else {
+            res.status(200).send(result);
+        }
+  });
+})
+
+//GET Filter all comments on a specific thread
+router.get("/:id/:filter", (req, res)=>{
+    const dbConnect = db.getDb();
+    dbConnect.collection('comments')
+    .find({$and: [{['id']: req.params.id}, {['content']:req.params.filter}]})
     .toArray(function (err, result) {
         if (err) {
             console.log("Something went wrong with DB call", err)

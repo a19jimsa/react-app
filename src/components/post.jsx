@@ -9,6 +9,7 @@ class Post extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleShowClick = this.handleShowClick.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleOnChangeSearch = this.handleOnChangeSearch.bind(this);
     }
 
     async componentDidMount(){
@@ -59,13 +60,27 @@ class Post extends React.Component {
         this.createAnswer();
     }
 
+    async updateState(query){
+        await fetch("/comments/"+this.props.id+"/filter", {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json' }
+        })
+            .then((response) => response.json()).then(data => {
+                this.setState({data: data})
+        });
+    }
+
+    async handleOnChangeSearch(event){
+        this.updateState(event.target.value);
+    }
+
     handleOnChange(event){
         this.setState({content: event.target.value});
     }
 
     render() { 
         return <div>
-            <div className="threadhead"><Breadcrums /><div>Sök i tråd: <input type="text"></input></div></div>
+            <div className="threadhead"><Breadcrums /><div>Sök i tråd: <input type="text"onChange={this.handleOnChangeSearch}></input></div></div>
             {this.state.data.map(tag=><div key={tag._id} className="post">
                 <h1>{tag.topic}</h1>
                 <div className="postHead">Datum: {tag.posted}</div>

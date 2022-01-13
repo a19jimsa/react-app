@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 router.get("/", (req, res)=>{
     const dbConnect = db.getDb();
     dbConnect.collection('threads')
-    .find({})
+    .find()
     .toArray(function (err, result) {
         if (err) {
             console.log("Something went wrong with DB call", err)
@@ -23,6 +23,20 @@ router.get("/", (req, res)=>{
             res.status(200).send(result);
         }
   });
+})
+
+router.get("/:query", (req, res)=>{
+    const dbConnect = db.getDb();
+    var regex = new RegExp(req.params.query, "i");
+    dbConnect.collection('threads')
+    .find({category: regex})
+    .toArray(function (err, result){
+        if (err) {
+            console.log("Something went wrong with DB call", err)
+        } else {
+            res.status(200).send(result);
+        }
+    });
 })
 
 //GET specific threads

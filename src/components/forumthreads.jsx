@@ -6,8 +6,9 @@ import CreateThread from "./createthread";
 class ForumThreads extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: []}
+        this.state = {data: [], filter: ""}
         this.handleClick = this.handleClick.bind(this);
+        this.filterThreads = this.filterThreads.bind(this);
     }
 
     async componentDidMount(){
@@ -26,9 +27,24 @@ class ForumThreads extends React.Component {
         ReactDOM.render(<Container type="Forum" id={id} username={username}/>, document.getElementById("content"));
     }
 
+    filterThreads(event){
+        this.updateState(event.target.value);
+    }
+
+    async updateState(value){
+        //Get filtered
+        await fetch("/threads/"+value, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json' }
+        })
+            .then((response) => response.json()).then(data => {
+                this.setState({data: data});
+        });
+    }
+
     render() { 
         return <div>
-            <div className="header"><CreateThread /><div>Sök: <input type="text"></input></div></div>
+            <div className="header"><CreateThread /><div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
             <table>
                 <thead>
                 <tr>

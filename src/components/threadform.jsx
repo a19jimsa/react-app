@@ -18,7 +18,7 @@ class ThreadForm extends React.Component {
         }
 
         //Create thread
-        await fetch("http://localhost:3000/record/", {
+        await fetch("/threads/", {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },
             body: JSON.stringify(thread)
@@ -46,7 +46,6 @@ class ThreadForm extends React.Component {
         [name]: value
         });
         console.log(name+" " +value);
-
     }
 
     render() { 
