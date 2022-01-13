@@ -20,7 +20,6 @@ class Menu extends React.Component {
             <nav>
                 <ul>
                     <button onClick={this.handleClick} value="Forum">Forum</button>
-                    <button onClick={this.handleClick} value="Nyheter">Nyheter</button>
                     <button onClick={this.handleClick} value="Trådar">Trådar</button>
                 </ul>
             </nav>

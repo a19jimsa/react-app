@@ -14,13 +14,6 @@ header{
     height: 50px;
 }
 
-.header{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
 .head{
     display: flex;
     justify-content: space-between;
@@ -29,6 +22,16 @@ header{
     height: 50px;
     margin: auto;
     padding: 10px;
+}
+
+.threadhead{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    padding: 0px;
 }
 
 ul {
@@ -83,7 +86,7 @@ nav{
 
 .postHead{
     border-radius: 6px 6px 0px 0px;
-    background-color: green;
+    background-color: #47c27e;
     padding: 10px;
 }
 
@@ -190,9 +193,6 @@ th{
     padding: 10px;
 }
 
-tr:nth-child(even){
-    background-color: green;
-}
 
 th:first-child{
     border-radius: 5px 0px 0px 0px;
@@ -205,4 +205,21 @@ th:last-child{
 
 tr{
     height: 50px;
+}
+
+.quoterow{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.quoterow > button{
+    margin-left: 10px;
+}
+
+.quote{
+    width: 100%;
+    border: 1px solid black;
+    background-color: grey;
+    border-radius: 5px;
 }
