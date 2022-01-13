@@ -47,7 +47,7 @@ class Post extends React.Component {
 
     handleShowClick(message){
         console.log(message);
-        if(message != ""){
+        if(message !== ""){
             message = "[quote]"+message+"[/quote]";
         }
         
