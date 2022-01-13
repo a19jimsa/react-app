@@ -61,7 +61,7 @@ class Post extends React.Component {
     }
 
     async updateState(query){
-        await fetch("/comments/"+this.props.id+"/filter", {
+        await fetch("/comments/"+this.props.id+"/"+query, {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
         })
