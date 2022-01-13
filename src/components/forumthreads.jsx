@@ -28,7 +28,7 @@ class ForumThreads extends React.Component {
 
     render() { 
         return <div>
-            <div className="head"><CreateThread /><div>Sök: <input type="text"></input></div></div>
+            <div className="header"><CreateThread /><div>Sök: <input type="text"></input></div></div>
             <table>
                 <thead>
                 <tr>
