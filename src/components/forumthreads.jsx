@@ -12,7 +12,7 @@ class ForumThreads extends React.Component {
 
     async componentDidMount(){
         //create comment on city chatt
-        await fetch("http://127.0.0.1:5000/", {
+        await fetch("/threads/", {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
         })

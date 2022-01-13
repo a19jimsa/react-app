@@ -11,13 +11,6 @@ const db = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-db.connectToServer(function (err) {
-  if (err) {
-    console.error(err);
-    process.exit();
-  }
-});
-
 //GET all threads
 router.get("/", (req, res)=>{
     const dbConnect = db.getDb();

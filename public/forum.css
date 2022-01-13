@@ -24,6 +24,12 @@ header{
     padding: 10px;
 }
 
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
 .threadhead{
     display: flex;
     justify-content: space-between;
