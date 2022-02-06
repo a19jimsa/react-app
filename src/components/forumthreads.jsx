@@ -1,14 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-import CreateThread from "./createthread";
+
+import {
+  AwesomeButton,
+  AwesomeButtonProgress,
+  AwesomeButtonSocial,
+} from 'react-awesome-button';
+
+import "react-awesome-button/dist/themes/theme-amber.css";
 
 class ForumThreads extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], filter: ""}
+        this.state = {data: [], filter: "", show: false}
         this.handleClick = this.handleClick.bind(this);
         this.filterThreads = this.filterThreads.bind(this);
+        this.handleShow = this.handleShow.bind(this);
+        this.handleOnChange = this.handleOnChange.bind(this);
+        this.handleCreateThread = this.handleCreateThread.bind(this);
     }
 
     async componentDidMount(){
@@ -42,13 +52,77 @@ class ForumThreads extends React.Component {
         });
     }
 
+    handleShow(){
+        this.setState(prevState => ({
+            show: !prevState.show
+          }));
+          console.log(this.state.show);
+    }
+
+    async createThread(){
+        const thread = {
+            "topic": this.state.topic,
+            "category": this.state.category,
+            "content": this.state.content,
+            "user": "Jimmy",
+            "posted": new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+        }
+
+        //Create thread
+        await fetch("/threads/", {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json' },
+            body: JSON.stringify(thread)
+        }).then((response) => response.json()).then(data => {
+            //Create thread comment on comments
+            fetch("/comments/"+data.insertedId, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json' },
+                body: JSON.stringify(thread)
+                }).then((response) => response.json()).then(data => {
+                    this.componentDidMount();
+            });
+        });
+    }
+
+    handleCreateThread(){
+        this.createThread();
+        this.handleShow();
+    }
+
+    handleOnChange(event){
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        this.setState({
+        [name]: value
+        });
+        console.log(name+" " +value);
+    }
+
+    draw(){
+        return <div className="boxBackground"><div className="box">
+            <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
+            <h1>Skapa ny tråd</h1>
+            <label>Rubrik</label>
+            <input type="text" name="topic" onChange={this.handleOnChange}/>
+            <label>Kategori</label>
+            <input type="text" name="category" onChange={this.handleOnChange}/>
+            <label>Inlägg</label>
+            <textarea name="content" onChange={this.handleOnChange}/>
+            <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
+            </div></div>
+    }
+
     render() { 
         return <div>
-            <div className="header"><CreateThread /><div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
+            <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
+            {this.state.show ? this.draw() : ""}
+            <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
             <table>
                 <thead>
                 <tr>
-                    <th>Rubrik</th><th>Kategori</th><th>Senaste inlägg</th>
+                    <th>Rubrik</th><th>Kategori</th><th>Inlägg</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,5 +1,13 @@
 import React from "react";
 
+import {
+  AwesomeButton,
+  AwesomeButtonProgress,
+  AwesomeButtonSocial,
+} from 'react-awesome-button';
+
+import "react-awesome-button/dist/themes/theme-amber.css";
+
 class AnswerForm extends React.Component {
     constructor(props) {
         super(props);
@@ -40,7 +48,7 @@ class AnswerForm extends React.Component {
     render() { 
         return <div className="createPost">
             <textarea onChange={this.handleOnChange} placeholder={this.state.content}></textarea>
-            <button onClick={this.handleClick}>Skicka meddelande</button>
+            <AwesomeButton onClick={this.handleClick}>Skicka meddelande</AwesomeButton>
         </div>;
     }
 }

@@ -5,13 +5,13 @@
 }
 
 html{
-    background-color: rgb(230, 230, 230);
+    background-color: #2f2f2f;
 }
 
 header{
     width: 100%;
     margin: auto;
-    height: 50px;
+    height: 100px;
 }
 
 .head{
@@ -19,7 +19,7 @@ header{
     justify-content: space-between;
     align-items: center;
     width: 60%;
-    height: 50px;
+    height: 100px;
     margin: auto;
     padding: 10px;
 }
@@ -55,7 +55,7 @@ nav{
 
 .menu{
     width: 100%;
-    height: 50px;
+    height: 75px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -138,36 +138,27 @@ nav{
 }
 
 .box{
+    color: white;
     position: fixed;
     top: 50%;
     left: 50%;
     width: 500px;
     height: 500px;
-    background-color: white;
+    background-color: #2f2f2f;
     border-radius: 6px;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0px 0px 5px grey;
+    box-shadow: 0px 10px 15px #000000;
     flex-direction: column;
-}
-
-.closeButton{
-    position: absolute;
-    top:0px;
-    right: 0px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: grey;
-    border: none;
+    padding: 10px;
+    z-index: 5;
 }
 
 .buttons{
     display: flex;
     flex-direction: row;
-    width: auto;
 }
 
 .createPost{
@@ -195,8 +186,24 @@ table{
 
 th{
     text-align: left;
-    background-color: orange;
+    background-color: #ffb300;
     padding: 10px;
+}
+
+.boxBackground{
+    width: 100%;
+    height: 100%;
+    background-color: #282c345e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.corner{
+    position: fixed !important;
+    top: 0;
+    right: 0;
 }
 
 
@@ -208,7 +215,6 @@ th:last-child{
     border-radius: 0px 5px 0px 0px;
 }
 
-
 tr{
     height: 50px;
 }
@@ -219,10 +225,6 @@ tr{
     flex-direction: row-reverse;
 }
 
-.quoterow > button{
-    margin-left: 10px;
-}
-
 .quote{
     width: 100%;
     border: 1px solid black;
@@ -230,17 +232,26 @@ tr{
     border-radius: 5px;
 }
 
-button{
-    background-color: orange;
-    padding: 5px;
-    border-radius: 5px;
-    border: none;
-    margin-right: 5px;
-}
-
 footer{
     width: 100%;
     height: 50px;
     background-color: white;
     margin-top: 10px;
+}
+
+textarea, input{
+    border-radius: 5px;
+    padding: 5px;
+    border: 2px solid #2f2f2f;
+}
+
+.aws-btn {
+--button-default-height: 48px !important;
+--button-default-font-size: 14px !important;
+--button-default-border-radius: 25px !important;
+--button-horizontal-padding: 20px !important;
+--button-raise-level: 10px !important;
+--button-hover-pressure: 2 !important;
+--transform-speed: 0.185s !important;
+ --button-primary-color-light: black !important;
 }

@@ -1,6 +1,14 @@
 import React from "react";
 import AnswerForm from "./answerform";
 
+import {
+  AwesomeButton,
+  AwesomeButtonProgress,
+  AwesomeButtonSocial,
+} from 'react-awesome-button';
+
+import "react-awesome-button/dist/themes/theme-amber.css";
+
 class AnswerButton extends React.Component {
     constructor(props) {
         super(props);
@@ -21,7 +29,7 @@ class AnswerButton extends React.Component {
             </div>
             )
         }else{
-            return <div className="answerButton"><button onClick={this.handleClick}>{this.props.value}</button></div>
+            return <div className="answerButton"><AwesomeButton type="primary" onClick={this.handleClick}>{this.props.value}</AwesomeButton></div>
         }
         
     }

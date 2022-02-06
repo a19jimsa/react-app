@@ -1,6 +1,14 @@
 import React from "react";
 import DialogBox from "./dialogbox";
 
+import {
+  AwesomeButton,
+  AwesomeButtonProgress,
+  AwesomeButtonSocial,
+} from 'react-awesome-button';
+
+import "react-awesome-button/dist/themes/theme-amber.css";
+
 class LoginUserForm extends React.Component {
     constructor(props) {
         super(props);
@@ -15,16 +23,17 @@ class LoginUserForm extends React.Component {
 
     render() { 
         if(this.state.show){
-        return <div><button onClick={this.handleClick}>Logga in</button>
+        return <div><AwesomeButton onPress={this.handleClick}>Logga in</AwesomeButton>
             <DialogBox>
+                <AwesomeButton onPress={this.handleClick} type="reddit" className="corner">X</AwesomeButton>
                 <h1>Logga in</h1>
                 <label>Användarnamn</label>
                 <input type="text"></input>
-                <input type="button" value="Logga in"></input>
+                <AwesomeButton onPress={this.handleClick}>Logga in</AwesomeButton>
             </DialogBox>
             </div>
         }else{
-            return <div><button onClick={this.handleClick}>Logga in</button></div>
+            return <div><AwesomeButton onPress={this.handleClick}>Logga in</AwesomeButton></div>
         }
     }
 }
