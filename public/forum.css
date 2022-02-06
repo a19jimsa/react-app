@@ -232,11 +232,23 @@ tr{
     border-radius: 5px;
 }
 
+<<<<<<< HEAD
+=======
+button{
+    background-color: orange;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5px;
+}
+
+>>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
 footer{
     width: 100%;
     height: 50px;
     background-color: white;
     margin-top: 10px;
+<<<<<<< HEAD
 }
 
 textarea, input{
@@ -255,3 +267,6 @@ textarea, input{
 --transform-speed: 0.185s !important;
  --button-primary-color-light: black !important;
 }
+=======
+}
+>>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
