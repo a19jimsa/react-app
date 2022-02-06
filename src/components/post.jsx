@@ -1,11 +1,16 @@
 import React from "react";
-import Breadcrums from "./breadcrums";
-import Quote from "./quote";
+import Breadcrums from "./Breadcrums";
+import Quote from "./Quote";
+
+import ContentLoader, { Facebook } from 'react-content-loader'
+
+const MyLoader = () => <ContentLoader />
+const MyFacebookLoader = () => <Facebook />
 
 class Post extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], show: false, placeholder: "Skriv ett svar", content: ""}
+        this.state = {data: [], show: false, placeholder: "Skriv ett svar", content: "", loaded: false}
         this.handleClick = this.handleClick.bind(this);
         this.handleShowClick = this.handleShowClick.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
@@ -20,7 +25,7 @@ class Post extends React.Component {
         })
             .then((response) => response.json()).then(data => {
                 console.log(data);
-                this.setState({data: data});
+                this.setState({data: data, loaded: true});
         });
     }
 
@@ -79,6 +84,7 @@ class Post extends React.Component {
     }
 
     render() { 
+        if(this.state.loaded){
         return <div>
             <div className="threadhead"><Breadcrums /><div>Sök i tråd: <input type="text"onChange={this.handleOnChangeSearch}></input></div></div>
             {this.state.data.map(tag=><div key={tag._id} className="post">
@@ -99,6 +105,9 @@ class Post extends React.Component {
             <button onClick={this.handleClick}>Skicka svar</button>
         </div> : <button onClick={this.handleShowClick.bind(this, "")}>Skriv Svar</button>}
         </div>
+        }else{
+            return <div><MyFacebookLoader /></div>
+        }
     }
 }
 

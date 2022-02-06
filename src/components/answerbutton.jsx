@@ -1,5 +1,5 @@
 import React from "react";
-import AnswerForm from "./answerform";
+import AnswerForm from "./Answerform";
 
 import {
   AwesomeButton,

@@ -42,6 +42,7 @@ header{
 
 ul {
     display: flex;
+    gap: 10px;
 }
 li{
     display: inline;
@@ -150,6 +151,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     box-shadow: 0px 10px 15px #000000;
     flex-direction: column;
     padding: 10px;
@@ -159,6 +161,7 @@ nav{
 .buttons{
     display: flex;
     flex-direction: row;
+    gap: 10px;
 }
 
 .createPost{

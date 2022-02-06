@@ -10,10 +10,15 @@ import {
 
 import "react-awesome-button/dist/themes/theme-amber.css";
 
+import ContentLoader, { Facebook } from 'react-content-loader'
+
+const MyLoader = () => <ContentLoader />
+const MyFacebookLoader = () => <Facebook />
+
 class ForumThreads extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], filter: "", show: false}
+        this.state = {data: [], filter: "", show: false, loaded: false}
         this.handleClick = this.handleClick.bind(this);
         this.filterThreads = this.filterThreads.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -29,7 +34,7 @@ class ForumThreads extends React.Component {
         })
             .then((response) => response.json()).then(data => {
                 console.log(data);
-                this.setState({data: data});
+                this.setState({data: data, loaded: true});
         });
     }
 
@@ -100,7 +105,7 @@ class ForumThreads extends React.Component {
         console.log(name+" " +value);
     }
 
-    draw(){
+    drawBox(){
         return <div className="boxBackground"><div className="box">
             <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
             <h1>Skapa ny tråd</h1>
@@ -114,24 +119,28 @@ class ForumThreads extends React.Component {
             </div></div>
     }
 
-    render() { 
-        return <div>
-            <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
-            {this.state.show ? this.draw() : ""}
-            <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Rubrik</th><th>Kategori</th><th>Inlägg</th>
-                </tr>
-                </thead>
-                <tbody>
-                    {this.state.data.map(tag => <tr key={tag._id}>
-                        <td onClick={this.handleClick.bind(this, tag._id, tag.user)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content} av {tag.user} postat {tag.posted}</td>
-                    </tr>)}
-                </tbody>
-            </table>
-        </div>
+    render() {
+        if(this.state.loaded){
+            return <div>
+                <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
+                {this.state.show ? this.drawBox() : ""}
+                <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Rubrik</th><th>Kategori</th><th>Inlägg</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.data.map(tag => <tr key={tag._id}>
+                            <td onClick={this.handleClick.bind(this, tag._id, tag.user)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content} av {tag.user} postat {tag.posted}</td>
+                        </tr>)}
+                    </tbody>
+                </table>
+            </div>
+        }else{
+            return <div><MyFacebookLoader /></div>
+        }
     }
 }
 

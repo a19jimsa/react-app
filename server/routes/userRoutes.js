@@ -28,5 +28,15 @@ router.post("/:username", express.json(), function(req, res){
         res.status(201).send(result);
     });
 })
+//POST Remove user
+router.post("/:username", express.json(), function(req, res){
+  const dbConnect = db.getDb();
+  const myObj = {['username']: req.params.username};
+  dbConnect.collection("users").removeOne(myObj, function(err, result){
+    if(err)throw err;
+    console.log("remove 1 documnet");
+    res.status(201).send(result);
+  })
+})
 
 module.exports = router;

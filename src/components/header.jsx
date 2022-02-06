@@ -1,6 +1,6 @@
 import React from "react";
-import CreateUserForm from "./createuserform";
-import LoginUserForm from "./loginuserform";
+import CreateUserForm from "./Createuserform";
+import LoginUserForm from "./Loginuserform";
 
 class Header extends React.Component {
     render() { 
