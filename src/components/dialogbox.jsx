@@ -2,7 +2,7 @@ import React from "react";
 
 class DialogBox extends React.Component {
     render() { 
-        return <div className="box">{this.props.children}</div>
+        return <div><div className="boxBackground"></div><div className="box">{this.props.children}</div></div>
     }
 }
 

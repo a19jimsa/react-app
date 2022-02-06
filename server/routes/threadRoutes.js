@@ -29,7 +29,7 @@ router.get("/:query", (req, res)=>{
     const dbConnect = db.getDb();
     var regex = new RegExp(req.params.query, "i");
     dbConnect.collection('threads')
-    .find({category: regex})
+    .find({topic: regex})
     .toArray(function (err, result){
         if (err) {
             console.log("Something went wrong with DB call", err)
