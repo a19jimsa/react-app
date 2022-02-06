@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-<<<<<<< HEAD
 
 import {
   AwesomeButton,
@@ -10,8 +9,6 @@ import {
 } from 'react-awesome-button';
 
 import "react-awesome-button/dist/themes/theme-amber.css";
-=======
->>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
 
 class ForumThreads extends React.Component {
     constructor(props) {
@@ -104,12 +101,8 @@ class ForumThreads extends React.Component {
     }
 
     draw(){
-<<<<<<< HEAD
         return <div className="boxBackground"><div className="box">
             <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
-=======
-        return <div className="box">
->>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
             <h1>Skapa ny tråd</h1>
             <label>Rubrik</label>
             <input type="text" name="topic" onChange={this.handleOnChange}/>
@@ -117,22 +110,13 @@ class ForumThreads extends React.Component {
             <input type="text" name="category" onChange={this.handleOnChange}/>
             <label>Inlägg</label>
             <textarea name="content" onChange={this.handleOnChange}/>
-<<<<<<< HEAD
             <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
             </div></div>
-=======
-            <input type="submit" value="Skapa tråd" onClick={this.handleCreateThread}/>
-            </div>
->>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
     }
 
     render() { 
         return <div>
-<<<<<<< HEAD
             <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
-=======
-            <div className="header"><button onClick={this.handleShow}>Skapa tråd</button>
->>>>>>> 50f91259afa481bb62b31401bc1b72bab43f166d
             {this.state.show ? this.draw() : ""}
             <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
             <table>
