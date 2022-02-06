@@ -14,7 +14,7 @@ class ForumThreads extends React.Component {
     }
 
     async componentDidMount(){
-        //create comment on city chatt
+        //create comment on city chatt detta är en kommentar
         await fetch("/threads/", {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
