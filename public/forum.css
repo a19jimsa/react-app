@@ -82,6 +82,27 @@ nav{
     background-color: white;
     margin: auto;
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 3.5rem;    /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;            /* Footer height */
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post{
@@ -239,13 +260,6 @@ tr{
     border-radius: 5px;
 }
 
-footer{
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    margin-top: 10px;
-}
-
 textarea, input{
     border-radius: 5px;
     padding: 5px;
@@ -256,6 +270,16 @@ button{
     background-color: orange;
     padding: 5px;
     border-radius: 5px;
+}
+
+.loading{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%);
+    background-color: white;
 }
 
 .aws-btn {

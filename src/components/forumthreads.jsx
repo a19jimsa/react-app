@@ -9,6 +9,7 @@ import {
 } from 'react-awesome-button';
 
 import "react-awesome-button/dist/themes/theme-amber.css";
+import { Grid } from  'react-loader-spinner';
 
 import ContentLoader, { Facebook } from 'react-content-loader'
 
@@ -18,7 +19,7 @@ const MyFacebookLoader = () => <Facebook />
 class ForumThreads extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], filter: "", show: false, loaded: false}
+        this.state = {data: [], filter: "", show: false, loaded: false, updated: false}
         this.handleClick = this.handleClick.bind(this);
         this.filterThreads = this.filterThreads.bind(this);
         this.handleShow = this.handleShow.bind(this);
@@ -34,7 +35,7 @@ class ForumThreads extends React.Component {
         })
             .then((response) => response.json()).then(data => {
                 console.log(data);
-                this.setState({data: data, loaded: true});
+                this.setState({data: data, loaded: true, updated: false});
         });
     }
 
@@ -59,7 +60,7 @@ class ForumThreads extends React.Component {
 
     handleShow(){
         this.setState(prevState => ({
-            show: !prevState.show
+            show: !prevState.show,
           }));
           console.log(this.state.show);
     }
@@ -91,6 +92,7 @@ class ForumThreads extends React.Component {
     }
 
     handleCreateThread(){
+        this.setState({updated: true});
         this.createThread();
         this.handleShow();
     }
@@ -106,22 +108,25 @@ class ForumThreads extends React.Component {
     }
 
     drawBox(){
-        return <div className="boxBackground"><div className="box">
-            <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
-            <h1>Skapa ny tråd</h1>
-            <label>Rubrik</label>
-            <input type="text" name="topic" onChange={this.handleOnChange}/>
-            <label>Kategori</label>
-            <input type="text" name="category" onChange={this.handleOnChange}/>
-            <label>Inlägg</label>
-            <textarea name="content" onChange={this.handleOnChange}/>
-            <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
-            </div></div>
+        return <div className="boxBackground">
+                <div className="box">
+                <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
+                <h1>Skapa ny tråd</h1>
+                <label>Rubrik</label>
+                <input type="text" name="topic" onChange={this.handleOnChange}/>
+                <label>Kategori</label>
+                <input type="text" name="category" onChange={this.handleOnChange}/>
+                <label>Inlägg</label>
+                <textarea name="content" onChange={this.handleOnChange}/>
+                <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
+                </div>
+            </div>
     }
 
     render() {
         if(this.state.loaded){
             return <div>
+                {this.state.updated ? <div className="loading"><Grid color="orange" height={80} width={80} /></div> : ""}
                 <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
                 {this.state.show ? this.drawBox() : ""}
                 <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>

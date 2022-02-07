@@ -15,7 +15,7 @@ const ObjectId = require("mongodb").ObjectId;
 router.get("/", (req, res)=>{
     const dbConnect = db.getDb();
     dbConnect.collection('threads')
-    .find()
+    .find().sort({posted: -1})
     .toArray(function (err, result) {
         if (err) {
             console.log("Something went wrong with DB call", err)
