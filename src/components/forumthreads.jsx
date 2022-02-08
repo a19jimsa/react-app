@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
+import { Spring, animated, easings } from 'react-spring'
 
 import {
   AwesomeButton,
@@ -108,25 +109,37 @@ class ForumThreads extends React.Component {
     }
 
     drawBox(){
-        return <div className="boxBackground">
-                <div className="box">
-                <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
-                <h1>Skapa ny tråd</h1>
-                <label>Rubrik</label>
-                <input type="text" name="topic" onChange={this.handleOnChange}/>
-                <label>Kategori</label>
-                <input type="text" name="category" onChange={this.handleOnChange}/>
-                <label>Inlägg</label>
-                <textarea name="content" onChange={this.handleOnChange}/>
-                <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
-                </div>
-            </div>
+
+    return <div className="boxBackground">
+        <Spring
+        from={{ opacity: 0, marginTop: -200 }}
+        to={[
+          { opacity: 1, marginTop: 0 },
+        ]}
+        config={{duration: 1000, easing: easings.easeInOutCubic}
+
+        }>
+        {styles => (
+            <animated.div style={styles} className="box">
+            <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
+            <h1>Skapa ny tråd</h1>
+            <label>Rubrik</label>
+            <input type="text" name="topic" onChange={this.handleOnChange}/>
+            <label>Kategori</label>
+            <input type="text" name="category" onChange={this.handleOnChange}/>
+            <label>Inlägg</label>
+            <textarea name="content" onChange={this.handleOnChange}/>
+            <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
+            </animated.div>
+        )}
+      </Spring>
+        </div>
     }
 
     render() {
         if(this.state.loaded){
             return <div>
-                {this.state.updated ? <div className="loading"><Grid color="orange" height={80} width={80} /></div> : ""}
+                {this.state.updated ? <div className="loading"><Grid color="orange" height={150} width={150} /></div> : ""}
                 <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
                 {this.state.show ? this.drawBox() : ""}
                 <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>

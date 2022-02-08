@@ -27,6 +27,7 @@ header{
 .header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 10px;
 }
 
@@ -173,10 +174,10 @@ nav{
     justify-content: center;
     align-items: center;
     gap: 10px;
-    box-shadow: 0px 10px 15px #000000;
     flex-direction: column;
     padding: 10px;
     z-index: 5;
+    box-shadow: 0px 5px 11px 0px #0c0c0c;
 }
 
 .buttons{
@@ -197,6 +198,24 @@ textarea{
     resize: vertical;
     padding: 10px;
     height: 150px;
+}
+
+input {
+  background-color: orange;
+  color: black;
+  padding: 1em 5em;
+  border-radius: 0.5em;
+  border:none;
+  outline:none;
+  transition: all 0.2s ease-out;
+  position: relative;
+  outline: 0;
+}
+
+input:focus {
+  box-shadow: 0 2px 3px #282c34;
+  border-bottom: 0.25em solid rgb(163, 106, 0);
+  top:-2px;
 }
 
 .breadcrums{
@@ -263,7 +282,6 @@ tr{
 textarea, input{
     border-radius: 5px;
     padding: 5px;
-    border: 2px solid #2f2f2f;
 }
 
 button{
@@ -276,19 +294,20 @@ button{
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 80px;
-    height: 80px;
+    width: 150px;
+    height: 150px;
     transform: translate(-50%, -50%);
-    background-color: white;
 }
 
 .aws-btn {
---button-default-height: 48px !important;
---button-default-font-size: 14px !important;
---button-default-border-radius: 25px !important;
---button-horizontal-padding: 20px !important;
---button-raise-level: 10px !important;
---button-hover-pressure: 2 !important;
---transform-speed: 0.185s !important;
- --button-primary-color-light: black !important;
+    --button-default-height: 48px !important;
+    --button-default-font-size: 14px !important;
+    --button-default-border-radius: 25px !important;
+    --button-horizontal-padding: 20px !important;
+    --button-raise-level: 10px !important;
+    --button-hover-pressure: 2 !important;
+    --transform-speed: 0.185s !important;
+    --button-primary-color-light: black !important;
+    font-family: 'Press Start 2P', cursive !important;
+    font-size: 10px !important;
 }
