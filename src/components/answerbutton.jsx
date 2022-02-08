@@ -1,12 +1,8 @@
 import React from "react";
 import AnswerForm from "./Answerform";
-
 import {
-  AwesomeButton,
-  AwesomeButtonProgress,
-  AwesomeButtonSocial,
+  AwesomeButton
 } from 'react-awesome-button';
-
 import "react-awesome-button/dist/themes/theme-amber.css";
 
 class AnswerButton extends React.Component {

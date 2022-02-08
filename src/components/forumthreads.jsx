@@ -4,9 +4,7 @@ import Container from "./Container";
 import { Spring, animated, easings } from 'react-spring'
 
 import {
-  AwesomeButton,
-  AwesomeButtonProgress,
-  AwesomeButtonSocial,
+  AwesomeButton
 } from 'react-awesome-button';
 
 import "react-awesome-button/dist/themes/theme-amber.css";

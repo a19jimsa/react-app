@@ -3,9 +3,7 @@ import ReactDOM from "react-dom";
 import Container from "./Container";
 
 import {
-  AwesomeButton,
-  AwesomeButtonProgress,
-  AwesomeButtonSocial,
+  AwesomeButton
 } from 'react-awesome-button';
 
 import "react-awesome-button/dist/themes/theme-amber.css";
