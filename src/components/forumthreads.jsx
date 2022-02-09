@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-import { Spring, animated, easings } from 'react-spring';
 
 import {
   AwesomeButton
@@ -10,10 +9,9 @@ import {
 import "react-awesome-button/dist/themes/theme-amber.css";
 import { Grid } from  'react-loader-spinner';
 
-import ContentLoader, { Facebook } from 'react-content-loader'
+import { Facebook } from 'react-content-loader';
 import DialogBox from "./Dialogbox";
 
-const MyLoader = () => <ContentLoader />
 const MyFacebookLoader = () => <Facebook />
 
 class ForumThreads extends React.Component {

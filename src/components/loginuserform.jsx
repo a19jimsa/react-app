@@ -15,8 +15,9 @@ class LoginUserForm extends React.Component {
     }
 
     handleClick(){
-        this.state.show = !this.state.show;
-        this.setState({show: this.state.show});
+        this.setState(prevState => ({
+            show: !prevState.show
+        }))
     }
 
     render() { 

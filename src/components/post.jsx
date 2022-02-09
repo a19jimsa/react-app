@@ -1,7 +1,6 @@
 import React from "react";
 import Breadcrums from "./Breadcrums";
 import Quote from "./Quote";
-
 import { Facebook } from 'react-content-loader'
 
 const MyFacebookLoader = () => <Facebook />
@@ -23,7 +22,6 @@ class Post extends React.Component {
             headers: {'Content-Type': 'application/json' }
         })
             .then((response) => response.json()).then(data => {
-                console.log(data);
                 this.setState({data: data, loaded: true});
         });
     }
@@ -55,8 +53,10 @@ class Post extends React.Component {
             message = "[quote]"+message+"[/quote]";
         }
         
-        this.state.show = !this.state.show;
-        this.setState({show: this.state.show, content: message});
+        this.setState(prevState => ({
+            show: !prevState.show
+        }))
+        this.setState({content: message});
     }
 
     handleClick(){
