@@ -54,9 +54,9 @@ class Post extends React.Component {
         }
         
         this.setState(prevState => ({
-            show: !prevState.show
+            show: !prevState.show,
+            content: message
         }))
-        this.setState({content: message});
     }
 
     handleClick(){
@@ -102,6 +102,7 @@ class Post extends React.Component {
             {this.state.show ? <div className="createPost">
             <textarea onChange={this.handleOnChange} placeholder={this.state.placeholder} value={this.state.content}></textarea>
             <button onClick={this.handleClick}>Skicka svar</button>
+            <button onClick={this.handleShowClick}>Ångra</button>
         </div> : <button onClick={this.handleShowClick.bind(this, "")}>Skriv Svar</button>}
         </div>
         }else{

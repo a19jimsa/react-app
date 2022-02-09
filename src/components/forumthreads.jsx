@@ -60,7 +60,6 @@ class ForumThreads extends React.Component {
         this.setState(prevState => ({
             show: !prevState.show,
           }));
-          console.log(this.state.show);
     }
 
     async createThread(){
