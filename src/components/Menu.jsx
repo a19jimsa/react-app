@@ -1,11 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-
 import {
   AwesomeButton
 } from 'react-awesome-button';
-
 import "react-awesome-button/dist/themes/theme-amber.css";
 
 class Menu extends React.Component {
