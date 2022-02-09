@@ -2,9 +2,8 @@ import React from "react";
 import Breadcrums from "./Breadcrums";
 import Quote from "./Quote";
 
-import ContentLoader, { Facebook } from 'react-content-loader'
+import { Facebook } from 'react-content-loader'
 
-const MyLoader = () => <ContentLoader />
 const MyFacebookLoader = () => <Facebook />
 
 class Post extends React.Component {

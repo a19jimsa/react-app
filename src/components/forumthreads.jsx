@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-import { Spring, animated, easings } from 'react-spring'
+import { Spring, animated, easings } from 'react-spring';
 
 import {
   AwesomeButton
@@ -11,6 +11,7 @@ import "react-awesome-button/dist/themes/theme-amber.css";
 import { Grid } from  'react-loader-spinner';
 
 import ContentLoader, { Facebook } from 'react-content-loader'
+import DialogBox from "./Dialogbox";
 
 const MyLoader = () => <ContentLoader />
 const MyFacebookLoader = () => <Facebook />
@@ -109,16 +110,7 @@ class ForumThreads extends React.Component {
     drawBox(){
 
     return <div className="boxBackground">
-        <Spring
-        from={{ opacity: 0, marginTop: -200 }}
-        to={[
-          { opacity: 1, marginTop: 0 },
-        ]}
-        config={{duration: 1000, easing: easings.easeInOutCubic}
-
-        }>
-        {styles => (
-            <animated.div style={styles} className="box">
+        <DialogBox>
             <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>
             <h1>Skapa ny tråd</h1>
             <label>Rubrik</label>
@@ -128,9 +120,7 @@ class ForumThreads extends React.Component {
             <label>Inlägg</label>
             <textarea name="content" onChange={this.handleOnChange}/>
             <AwesomeButton onPress={this.handleCreateThread}>Skapa tråd</AwesomeButton>
-            </animated.div>
-        )}
-      </Spring>
+        </DialogBox>
         </div>
     }
 
