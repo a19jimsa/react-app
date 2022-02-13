@@ -9,8 +9,8 @@ app.use(express.json());
 const dbo = require("./db/conn");
 
 //Include routes
-const commentsRoute = require("./routes/commentsRoute")
-app.use("/comments", commentsRoute);
+const commentRoutes = require("./routes/commentRoutes")
+app.use("/comments", commentRoutes);
 
 const threadRoute = require("./routes/threadRoutes")
 app.use("/threads", threadRoute);

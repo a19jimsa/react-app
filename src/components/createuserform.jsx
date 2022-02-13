@@ -11,25 +11,25 @@ class CreateUserForm extends React.Component {
         this.state= {show: false, username: ""};
         this.handleClick = this.handleClick.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
+        this.createUser = this.createUser.bind(this);
     }
 
     async createUser(){
         const data = {
-            "user": this.props.username
+            "username": this.state.username
         }
 
-        await fetch("/users", {
+        await fetch("/users/", {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         })
             .then((response) => response.json()).then(data => {
-                console.log(data);
+                this.handleClick();
         });
     }
 
     handleClick(){
-        this.createUser();
         this.setState(prevState => ({
             show: !prevState.show
         }))
@@ -50,7 +50,7 @@ class CreateUserForm extends React.Component {
                 <h1>Skapa användare</h1>
                 <label>Användarnamn</label>
                 <input name="username" onChange={this.handleOnChange} type="text"></input>
-                <AwesomeButton type="primary" onPress={this.handleClick}>Skapa</AwesomeButton>
+                <AwesomeButton type="primary" onPress={this.createUser}>Skapa</AwesomeButton>
             </DialogBox>
             </div>
         }else{

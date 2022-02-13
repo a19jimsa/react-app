@@ -18,25 +18,28 @@ db.connectToServer(function (err) {
   }
 });
 
+router.get("/", function(req, res){
+  const dbConnect = db.getDb();
+    dbConnect.collection('users')
+    .find()
+    .toArray(function (err, result) {
+        if (err) {
+            console.log("Something went wrong with DB call", err)
+        } else {
+            res.status(200).send(result);
+        }
+  });
+})
+
 // POST Add user
-router.post("/:username", express.json(), function(req, res){
+router.post("/", express.json(), function(req, res){
     const dbConnect = db.getDb();
-    var myobj = { ['username']: req.params.threadId};
+    var myobj = { ['username']: req.body.username};
     dbConnect.collection("users").insertOne(myobj, function(err, result) {
         if (err) throw err;
         console.log("1 document inserted");
         res.status(201).send(result);
     });
-})
-//POST Remove user
-router.post("/:username", express.json(), function(req, res){
-  const dbConnect = db.getDb();
-  const myObj = {['username']: req.params.username};
-  dbConnect.collection("users").removeOne(myObj, function(err, result){
-    if(err)throw err;
-    console.log("remove 1 documnet");
-    res.status(201).send(result);
-  })
 })
 
 module.exports = router;

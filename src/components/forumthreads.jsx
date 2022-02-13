@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Container from "./Container";
-
 import {
   AwesomeButton
 } from 'react-awesome-button';
-
 import "react-awesome-button/dist/themes/theme-amber.css";
 import { Grid } from  'react-loader-spinner';
-
 import { Facebook } from 'react-content-loader';
 import DialogBox from "./Dialogbox";
 
@@ -136,7 +133,7 @@ class ForumThreads extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.data.map(tag => <tr key={tag._id}>
-                            <td onClick={this.handleClick.bind(this, tag._id, tag.user)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content} av {tag.user} postat {tag.posted}</td>
+                            <td onClick={this.handleClick.bind(this, tag._id, tag.user)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
                         </tr>)}
                     </tbody>
                 </table>
