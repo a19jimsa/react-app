@@ -1,6 +1,6 @@
 import React from "react";
-import CreateUserForm from "./components/Createuserform";
-import LoginUserForm from "./components/Loginuserform";
+import CreateUserForm from "./Createuserform";
+import LoginUserForm from "./Loginuserform";
 import Background from "../images/logo192.png";
 
 class Header extends React.Component {
