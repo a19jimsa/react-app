@@ -8,6 +8,8 @@ app.use(express.json());
 // get driver connection
 const dbo = require("./db/conn");
 
+app.use(express.static('../src/components'));
+
 //Include routes
 const commentRoutes = require("./routes/commentRoutes")
 app.use("/comments", commentRoutes);

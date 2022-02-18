@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Container from "./dontainer";
+import Container from "./container";
 import {
   AwesomeButton
 } from 'react-awesome-button';
@@ -24,7 +24,7 @@ class Menu extends React.Component {
             <nav>
                 <ul>
                     <AwesomeButton onPress={this.handleClick.bind("Forum")}>Forum</AwesomeButton>
-                    <AwesomeButton onPress={this.handleClick.bind("tradar")}>Min sida</AwesomeButton>
+                    <AwesomeButton onPress={this.handleClick.bind("tradar")}>Min sidaa</AwesomeButton>
                 </ul>
             </nav>
         </div>
