@@ -9,6 +9,8 @@ app.use(express.json());
 const dbo = require("./db/conn");
 
 app.use(express.static('../src/components'));
+app.use(express.static('../public'));
+app.use(express.static('../server'));
 
 //Include routes
 const commentRoutes = require("./routes/commentRoutes")
