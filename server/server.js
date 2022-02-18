@@ -6,7 +6,9 @@ app.use(express.json());
 // get driver connection
 const dbo = require("./db/conn");
 
-app.use(express.static('../src/components'));
+const path = require("path");
+
+app.use(express.static('../src'));
 app.use(express.static('../public'));
 app.use(express.static('../server'));
 
@@ -19,6 +21,8 @@ app.use("/threads", threadRoute);
 
 const userRoute = require("./routes/userRoutes")
 app.use("/users", userRoute);
+
+app.use(express.static(path.resolve(__dirname, "../src/build")));
  
 app.listen(port, () => {
   // perform a database connection when server starts
@@ -26,5 +30,5 @@ app.listen(port, () => {
     if (err) console.error(err);
  
   });
-  console.log(`Server is running on port: ${port}`);
+  console.log(`Server is running on porten: ${port}`);
 });
