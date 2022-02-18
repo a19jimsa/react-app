@@ -1,5 +1,5 @@
 import React from "react";
-import DialogBox from "./Dialogbox";
+import DialogBox from "./dialogbox";
 import {
   AwesomeButton
 } from 'react-awesome-button';

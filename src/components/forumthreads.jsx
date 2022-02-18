@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Container from "./Container";
+import Container from "./dontainer";
 import {
   AwesomeButton
 } from 'react-awesome-button';
 import "react-awesome-button/dist/themes/theme-amber.css";
 import { Grid } from  'react-loader-spinner';
 import { Facebook } from 'react-content-loader';
-import DialogBox from "./Dialogbox";
+import DialogBox from "./dialogbox";
 
 const MyFacebookLoader = () => <Facebook />
 
