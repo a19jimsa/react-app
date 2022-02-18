@@ -1,11 +1,11 @@
 import React from "react";
-import ForumThreads from "./Forumthreads";
-import Post from "./Post";
+import ForumThreads from "./forumthreads";
+import Post from "./post";
 
 class Container extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {type: ""}
+        this.state = {type: "dwqdwq"}
     }
 
     render() {
