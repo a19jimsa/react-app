@@ -24,7 +24,7 @@ class Menu extends React.Component {
             <nav>
                 <ul>
                     <AwesomeButton onPress={this.handleClick.bind("Forum")}>Forum</AwesomeButton>
-                    <AwesomeButton onPress={this.handleClick.bind("tradar")}>Min sida</AwesomeButton>
+                    <AwesomeButton onPress={this.handleClick.bind("tradar")}>Min sidaa</AwesomeButton>
                 </ul>
             </nav>
         </div>

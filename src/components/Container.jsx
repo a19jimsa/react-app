@@ -5,7 +5,7 @@ import Post from "./post";
 class Container extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {type: ""}
+        this.state = {type: "dwqdwq"}
     }
 
     render() {
