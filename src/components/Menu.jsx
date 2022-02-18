@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Container from "./Container";
+import Container from "./container";
 import {
   AwesomeButton
 } from 'react-awesome-button';

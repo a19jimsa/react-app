@@ -1,6 +1,6 @@
 import React from "react";
 import ForumThreads from "./forumthreads";
-import Post from "./Post";
+import Post from "./post";
 
 class Container extends React.Component {
     constructor(props) {

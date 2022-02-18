@@ -1,6 +1,6 @@
 import React from "react";
-import Breadcrums from "./Breadcrums";
-import Quote from "./Quote";
+import Breadcrums from "./breadcrums";
+import Quote from "./quote";
 import { Facebook } from 'react-content-loader'
 
 const MyFacebookLoader = () => <Facebook />
