@@ -8,6 +8,7 @@ class Header extends React.Component {
         return <div className="head">
             <div className="logoHead"><img src={Background} alt={"logo"} width="50" height="50"></img>Jimmys hemsida</div>
             <div className="buttons">
+                <div>Just testing header</div>
                 <CreateUserForm />
                 <LoginUserForm />
             </div>
