@@ -11,7 +11,7 @@ class Container extends React.Component {
     render() {
         if(this.props.type === "Forum"){
             return <div className="container">
-            <Post id={this.props.id} />
+            <Post id={this.props.id} breadcrum={this.props.breadcrum} />
             </div>
         }else{
             return <div className="container">

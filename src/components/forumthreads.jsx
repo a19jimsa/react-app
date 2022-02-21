@@ -29,13 +29,12 @@ class ForumThreads extends React.Component {
             headers: {'Content-Type': 'application/json' }
         })
             .then((response) => response.json()).then(data => {
-                console.log(data);
                 this.setState({data: data, loaded: true, updated: false});
         });
     }
 
-    handleClick(id, username){
-        ReactDOM.render(<Container type="Forum" id={id} username={username}/>, document.getElementById("content"));
+    handleClick(id, username, breadcrum){
+        ReactDOM.render(<Container type="Forum" id={id} username={username} breadcrum={breadcrum} />, document.getElementById("content"));
     }
 
     filterThreads(event){
@@ -133,7 +132,7 @@ class ForumThreads extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.data.map(tag => <tr key={tag._id}>
-                            <td onClick={this.handleClick.bind(this, tag._id, tag.user)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
+                            <td onClick={this.handleClick.bind(this, tag._id, tag.user, tag.category)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
                         </tr>)}
                     </tbody>
                 </table>

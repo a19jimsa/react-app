@@ -8,7 +8,7 @@ const MyFacebookLoader = () => <Facebook />
 class Post extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {data: [], show: false, placeholder: "Skriv ett svar", content: "", loaded: false}
+        this.state = {data: [], show: false, placeholder: "Skriv ett svar", content: "", loaded: false, breadcrum: this.props.breadcrum};
         this.handleClick = this.handleClick.bind(this);
         this.handleShowClick = this.handleShowClick.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
@@ -17,7 +17,7 @@ class Post extends React.Component {
 
     async componentDidMount(){
         //GET all comments on specific thread
-        await fetch("/comments/"+this.props.id, {
+        await fetch("/comments/" + this.props.id, {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
         })
@@ -48,7 +48,6 @@ class Post extends React.Component {
     }
 
     handleShowClick(message){
-        console.log(message);
         if(message !== ""){
             message = "[quote]"+message+"[/quote]";
         }
@@ -74,7 +73,7 @@ class Post extends React.Component {
         });
     }
 
-    async handleOnChangeSearch(event){
+    handleOnChangeSearch(event){
         this.updateState(event.target.value);
     }
 
@@ -85,7 +84,7 @@ class Post extends React.Component {
     render() { 
         if(this.state.loaded){
         return <div>
-            <div className="threadhead"><Breadcrums /><div>Sök i tråd: <input type="text"onChange={this.handleOnChangeSearch}></input></div></div>
+            <div className="threadhead"><Breadcrums value={this.state.breadcrum} /><div>Sök i tråd: <input type="text"onChange={this.handleOnChangeSearch}></input></div></div>
             {this.state.data.map(tag=><div key={tag._id} className="post">
                 <h1>{tag.topic}</h1>
                 <div className="postHead">Datum: {tag.posted}</div>
