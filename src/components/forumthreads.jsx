@@ -131,8 +131,8 @@ class ForumThreads extends React.Component {
                     </tr>
                     </thead>
                     <tbody>
-                        {this.state.data.map(tag => <tr key={tag._id}>
-                            <td onClick={this.handleClick.bind(this, tag._id, tag.user, tag.category)}>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
+                        {this.state.data.map(tag => <tr key={tag._id} onClick={this.handleClick.bind(this, tag._id, tag.user, tag.category)}>
+                            <td>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
                         </tr>)}
                     </tbody>
                 </table>
