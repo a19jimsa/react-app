@@ -31,7 +31,7 @@ header{
     justify-content: flex-start;
     align-items: center;
     color: white;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .header{
@@ -195,7 +195,7 @@ tr:hover{
     flex-direction: column;
     padding: 10px;
     z-index: 5;
-    box-shadow: 0px 5px 11px 0px #0c0c0c;
+    box-shadow: 0px 5px 11px 0px black;
 }
 
 .buttons{
@@ -330,3 +330,34 @@ button{
     font-family: 'Press Start 2P', cursive !important;
     font-size: 10px !important;
 }
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 10px;
+}
+
+.grid-container div{
+    width: 100%;
+    min-height: 200px;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    background-color: #2f2f2f;
+    color: white;
+}
+
+.grid-container button{
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media only screen and (max-width: 1440px) {
+    .logoHead {
+      font-size: 2rem;
+    }
+  }

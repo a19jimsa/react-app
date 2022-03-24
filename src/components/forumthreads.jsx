@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Container from "./dontainer";
-import {
-  AwesomeButton
-} from 'react-awesome-button';
+import Container from "./container";
+import {AwesomeButton} from 'react-awesome-button';
 import "react-awesome-button/dist/themes/theme-amber.css";
 import { Grid } from  'react-loader-spinner';
 import { Facebook } from 'react-content-loader';
@@ -27,14 +25,13 @@ class ForumThreads extends React.Component {
         await fetch("/threads/", {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
-        })
-            .then((response) => response.json()).then(data => {
-                this.setState({data: data, loaded: true, updated: false});
+        }).then((response) => response.json()).then(data => {
+            this.setState({data: data, loaded: true, updated: false});
         });
     }
 
     handleClick(id, username, breadcrum){
-        ReactDOM.render(<Container type="Forum" id={id} username={username} breadcrum={breadcrum} />, document.getElementById("content"));
+        ReactDOM.render(<Container type="post" id={id} username={username} breadcrum={breadcrum} />, document.getElementById("content"));
     }
 
     filterThreads(event){
@@ -46,9 +43,8 @@ class ForumThreads extends React.Component {
         await fetch("/threads/"+value, {
             method: 'GET',
             headers: {'Content-Type': 'application/json' }
-        })
-            .then((response) => response.json()).then(data => {
-                this.setState({data: data});
+        }).then((response) => response.json()).then(data => {
+            this.setState({data: data});
         });
     }
 
@@ -97,11 +93,9 @@ class ForumThreads extends React.Component {
         this.setState({
         [name]: value
         });
-        console.log(name+" " +value);
     }
 
-    drawBox(){
-
+    drawBox() {
     return <div className="boxBackground">
         <DialogBox>
             <AwesomeButton type="reddit" onPress={this.handleShow} className="corner">X</AwesomeButton>

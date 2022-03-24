@@ -38,7 +38,6 @@ class CreateUserForm extends React.Component {
     handleOnChange(event){
         const name = event.target.name;
         const value = event.target.value;
-        console.log(name + " " + value);
         this.setState({username: value})
     }
 
