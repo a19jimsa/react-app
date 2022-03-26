@@ -121,12 +121,12 @@ class ForumThreads extends React.Component {
                 <table>
                     <thead>
                     <tr>
-                        <th>Rubrik</th><th>Kategori</th><th>Inlägg</th>
+                        <th>Rubrik</th><th>Kategori</th><th>Senaste inlägg</th>
                     </tr>
                     </thead>
                     <tbody>
                         {this.state.data.map(tag => <tr key={tag._id} onClick={this.handleClick.bind(this, tag._id, tag.user, tag.category)}>
-                            <td>{tag.topic}</td><td>{tag.category}</td><td>{tag.content}<br></br>Postat {tag.posted} av {tag.user} </td>
+                            <td>{tag.topic}</td><td>{tag.category}</td><td>Postat {tag.posted} av {tag.user} </td>
                         </tr>)}
                     </tbody>
                 </table>

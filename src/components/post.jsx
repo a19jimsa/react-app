@@ -29,7 +29,7 @@ class Post extends React.Component {
     async createAnswer(){
         const date = new Date();
         const datetime = date.toLocaleDateString() + " " + date.toLocaleTimeString();
-        const data = {
+        const answer = {
             "id": this.props.id,
             "content": this.state.content,
             "posted": datetime,
@@ -39,11 +39,17 @@ class Post extends React.Component {
         await fetch("/comments/"+this.props.id, {
             method: 'POST',
             headers: {'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-            .then((response) => response.json()).then(data => {
-                this.componentDidMount();
-                this.setState({content: ""})
+            body: JSON.stringify(answer)
+        }).then((response) => response.json()).then(data => {
+            this.componentDidMount();
+            //Update thread with latest post
+            fetch("/threads/updatethread/" + this.props.id, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json' },
+                body: JSON.stringify(answer)
+                }).then((response) => response.json()).then(data => {
+                    this.setState({content: ""})
+            });
         });
     }
 

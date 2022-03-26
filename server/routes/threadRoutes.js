@@ -52,4 +52,18 @@ router.post("/", express.json(), function(req, res){
     });
 })
 
+//POST Update last post
+router.post("/updatethread/:id", express.json(), function(req, res){
+    const dbConnect = db.getDb();
+    console.log(req.body.content);
+    const myquery = {_id : new ObjectId(req.params.id)}
+    console.log(myquery);
+    const newValues = {$set : {content: req.body.content, posted: req.body.posted}}
+    dbConnect.collection("threads").updateOne(myquery, newValues, function(err, result){
+        if(err) throw err;
+        console.log("1 document updated");
+        res.status(201).send(result);
+    })
+})
+
 module.exports = router;

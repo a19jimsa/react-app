@@ -50,7 +50,6 @@ router.get("/:id", (req, res)=>{
 router.get("/:id/:filter", (req, res)=>{
     var regex = new RegExp(req.params.filter, "i");
     const dbConnect = db.getDb();
-    console.log(req.params.id + " " + req.params.filter);
     dbConnect.collection('comments')
     .find({$and: [{['id']: req.params.id}, {content:regex}]})
     .toArray(function (err, result) {
