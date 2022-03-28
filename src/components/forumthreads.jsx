@@ -115,9 +115,12 @@ class ForumThreads extends React.Component {
         if(this.state.loaded){
             return <div>
                 {this.state.updated ? <div className="loading"><Grid color="orange" height={150} width={150} /></div> : ""}
-                <div className="header"><AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
-                {this.state.show ? this.drawBox() : ""}
-                <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input></div></div>
+                <div className="header">
+                        <AwesomeButton type="primary" onPress={this.handleShow}>Skapa ny tråd</AwesomeButton>
+                    {this.state.show ? this.drawBox() : ""}
+                    <div>Sök trådar: <input type="text" onChange={this.filterThreads}></input>
+                    </div>
+                </div>
                 <table>
                     <thead>
                     <tr>
@@ -126,7 +129,7 @@ class ForumThreads extends React.Component {
                     </thead>
                     <tbody>
                         {this.state.data.map(tag => <tr key={tag._id} onClick={this.handleClick.bind(this, tag._id, tag.user, tag.category)}>
-                            <td>{tag.topic}</td><td>{tag.category}</td><td>Postat {tag.posted} av {tag.user} </td>
+                            <td>{tag.topic}</td><td>{tag.category}</td><td>{tag.posted}<br></br> av {tag.user} </td>
                         </tr>)}
                     </tbody>
                 </table>

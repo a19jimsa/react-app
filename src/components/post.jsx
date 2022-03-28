@@ -13,6 +13,7 @@ class Post extends React.Component {
         this.handleShowClick = this.handleShowClick.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleOnChangeSearch = this.handleOnChangeSearch.bind(this);
+        this.handleLikeClick = this.handleLikeClick.bind(this);
     }
 
     async componentDidMount(){
@@ -87,6 +88,15 @@ class Post extends React.Component {
         this.setState({content: event.target.value});
     }
 
+    async handleLikeClick(id){
+        await fetch("/comments/like/"+id, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'}
+        }).then((response) => response.json()).then(data => {
+            this.componentDidMount();
+        })
+    }
+
     render() { 
         if(this.state.loaded){
         return <div>
@@ -100,6 +110,7 @@ class Post extends React.Component {
                         <div className="postMessage"><Quote content={tag.content} /></div>
                         <div className="quoterow">
                             <button onClick={this.handleShowClick.bind(this, tag.content)}>Citera</button>
+                            <button onClick={this.handleLikeClick.bind(this, tag._id)}>Gilla({tag.likes})</button>
                         </div>
                     </div>
                 </div>

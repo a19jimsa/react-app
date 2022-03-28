@@ -293,12 +293,13 @@ tr{
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
+    gap: 10px;
 }
 
 .quote{
     width: 100%;
     border: 1px solid black;
-    background-color: #282c34;
+    background-color: #2f2f2f;
     border-radius: 5px;
     padding: 10px;
 }
@@ -309,9 +310,13 @@ textarea, input{
 }
 
 button{
-    background-color: orange;
+    background-color: #ffb300;
     padding: 5px;
     border-radius: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bold;
+    border: none;
+    outline: none;
 }
 
 .loading{

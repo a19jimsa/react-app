@@ -64,10 +64,25 @@ router.get("/:id/:filter", (req, res)=>{
 // POST Add comment on specific thread
 router.post("/:threadId", express.json(), function(req, res){
     const dbConnect = db.getDb();
-    var myobj = { ['id']: req.params.threadId, ['topic']: req.body.topic, ['content']:req.body.content,['posted']:req.body.posted, ['user']:req.body.user};
+    var myobj = { ['id']: req.params.threadId, ['topic']: req.body.topic, ['content']:req.body.content,['posted']:req.body.posted, ['user']:req.body.user, ['likes']:0};
     dbConnect.collection("comments").insertOne(myobj, function(err, result) {
         if (err) throw err;
         console.log("1 document inserted");
+        res.status(201).send(result);
+    });
+})
+
+router.post("/like/:id", express.json(), function(req, res){
+    const dbConnect = db.getDb();
+    console.log(req.params.id);
+    const myquery = {_id : ObjectId(req.params.id)};
+    console.log(myquery)
+    const newValues = {$inc : {likes: 1}}
+    console.log(newValues);
+    dbConnect.collection("comments").updateOne(myquery, newValues, function(err, result){
+        if(err) throw err;
+        console.log("1 document updated");
+        console.log(result);
         res.status(201).send(result);
     });
 })
