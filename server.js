@@ -27,6 +27,13 @@ app.listen(port, () => {
   // perform a database connection when server starts
   dbo.connectToServer(function (err) {
     if (err) console.error(err);
+<<<<<<< HEAD
   });
   console.log(`Server is running on port: ${port}`);
 });
+=======
+
+    console.log(`Server is running on porten: ${port}`);
+  });
+});
+>>>>>>> 17989c53467efca47e4ff1f5b30214c539f180cd

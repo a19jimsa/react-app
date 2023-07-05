@@ -10,7 +10,11 @@
     "esbundle": "^0.0.2",
     "express": "^4.18.2",
     "expressjs": "^1.0.1",
+<<<<<<< HEAD
     "mongodb": "^4.11.0",
+=======
+    "mongodb": "^4.15.0",
+>>>>>>> 17989c53467efca47e4ff1f5b30214c539f180cd
     "react": "^17.0.2",
     "react-awesome-button": "^6.5.1",
     "react-content-loader": "^6.1.0",
