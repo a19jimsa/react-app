@@ -45,7 +45,7 @@ class Post extends React.Component {
       posted: datetime,
       user: "Jimmy",
     };
-
+    /*
     await fetch("/comments/" + this.props.id, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -65,6 +65,7 @@ class Post extends React.Component {
             this.setState({ content: "" });
           });
       });
+      */
   }
 
   handleShowClick(message) {
@@ -84,6 +85,7 @@ class Post extends React.Component {
   }
 
   async updateState(query) {
+    /*
     await fetch("/comments/" + this.props.id + "/" + query, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -92,6 +94,7 @@ class Post extends React.Component {
       .then((data) => {
         this.setState({ data: data });
       });
+      */
   }
 
   handleOnChangeSearch(event) {
@@ -103,6 +106,7 @@ class Post extends React.Component {
   }
 
   async handleLikeClick(id) {
+    /*
     await fetch("/comments/like/" + id, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -111,6 +115,7 @@ class Post extends React.Component {
       .then((data) => {
         this.componentDidMount();
       });
+      */
   }
 
   render() {
